@@ -1,8 +1,8 @@
 # 🌿 EcoBudget — Migration Kotlin Multiplatform (KMP) & Compose Multiplatform (CMP)
 
-**Étudiant** : [Votre Nom / Prénom]  
-**Dépôt GitHub** : [Lien vers votre dépôt GitHub]  
-**UE** : Développement Mobile Avancé (Chapitre 03)
+**Étudiant** : DIAGNE ALI TIEKOURA
+**Dépôt GitHub** : https://github.com/pecto1/ECOBUDGET-migrationkmp
+**UE** : Développement Mobile Avancé 
 
 ---
 
@@ -19,9 +19,9 @@ Cette migration permet de mutualiser la logique métier, les modèles de donnée
 ## 📸 1. Aperçu Visuel & Preuve d'Exécution
 ## 📸 1. Aperçu Visuel & Preuve d'Exécution
 
-| Écran Principal (Dashboard) | Filtrage par Catégorie | Dialogue d'Ajout / Édition |
-|---|---|---|
-| <img src="./image/dashboard.png" width="250" alt="Dashboard" /> | <img src="./image/filter.png" width="250" alt="Filtres" /> | <img src="./image/dialogajout.png" width="250" alt="Dialogue d'Ajout" /> |
+| Écran Principal | Dialogue d'Ajout / Édition |
+| :---: | :---: |
+| <img src="./image/dashbaord.png" width="300" alt="Écran Principal" /> | <img src="./image/dialogajout.png" width="300" alt="Dialogue d'Ajout" /> |
 ---
 
 ## 🏗️ 2. Architecture du Module Partagé (`:shared`)
