@@ -65,6 +65,9 @@ android {
 }
 
 dependencies {
+  // Module partagé KMP
+  implementation(project(":shared"))
+
   // Compose BOM & UI
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.activity.compose)
@@ -83,7 +86,6 @@ dependencies {
 
   // Coroutines
   implementation(libs.kotlinx.coroutines.android)
-  implementation(libs.kotlinx.coroutines.core)
 
   // Base locale (à retirer si vous n'utilisez pas Room)
   implementation(libs.androidx.room.ktx)

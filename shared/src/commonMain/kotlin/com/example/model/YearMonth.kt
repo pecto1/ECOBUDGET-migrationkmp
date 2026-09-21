@@ -1,9 +1,9 @@
-package com.example.model
+﻿package com.example.model
 
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 /**
  * Modèle immuable représentant un mois spécifique pour la navigation budgétaire.
@@ -20,13 +20,8 @@ data class YearMonth(
      */
     val displayLabel: String
         get() {
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.YEAR, year)
-            cal.set(Calendar.MONTH, month)
-            cal.set(Calendar.DAY_OF_MONTH, 1)
-            val sdf = SimpleDateFormat("MMMM yyyy", Locale.FRENCH)
-            val formatted = sdf.format(Date(cal.timeInMillis))
-            return formatted.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.FRENCH) else it.toString() }
+            val monthName = MONTH_NAMES_FR.getOrElse(month) { "" }
+            return "$monthName $year"
         }
 
     /**
@@ -55,20 +50,25 @@ data class YearMonth(
      * Vérifie si un timestamp millisecondes appartient à ce mois précis.
      */
     fun containsTimestamp(timestamp: Long): Boolean {
-        val cal = Calendar.getInstance()
-        cal.timeInMillis = timestamp
-        return cal.get(Calendar.YEAR) == year && cal.get(Calendar.MONTH) == month
+        val instant = Instant.fromEpochMilliseconds(timestamp)
+        val ldt = instant.toLocalDateTime(TimeZone.currentSystemDefault())
+        return ldt.year == year && (ldt.monthNumber - 1) == month
     }
 
     companion object {
+        private val MONTH_NAMES_FR = listOf(
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        )
+
         /**
          * Crée le YearMonth courant.
          */
         fun current(): YearMonth {
-            val cal = Calendar.getInstance()
+            val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
             return YearMonth(
-                year = cal.get(Calendar.YEAR),
-                month = cal.get(Calendar.MONTH)
+                year = now.year,
+                month = now.monthNumber - 1
             )
         }
 
@@ -76,11 +76,10 @@ data class YearMonth(
          * Crée le YearMonth correspondant à un timestamp.
          */
         fun fromTimestamp(timestamp: Long): YearMonth {
-            val cal = Calendar.getInstance()
-            cal.timeInMillis = timestamp
+            val dateTime = Instant.fromEpochMilliseconds(timestamp).toLocalDateTime(TimeZone.currentSystemDefault())
             return YearMonth(
-                year = cal.get(Calendar.YEAR),
-                month = cal.get(Calendar.MONTH)
+                year = dateTime.year,
+                month = dateTime.monthNumber - 1
             )
         }
     }

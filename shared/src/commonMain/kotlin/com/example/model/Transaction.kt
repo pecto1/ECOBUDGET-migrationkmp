@@ -1,4 +1,6 @@
-package com.example.model
+﻿package com.example.model
+
+import com.example.utils.generateUUID
 
 /**
  * Modèle de données immuable représentant une transaction / dépense au sein d'EcoBudget.
@@ -10,7 +12,7 @@ package com.example.model
  * @property category Catégorie associée à la dépense (TRANSPORT, ALIMENTATION, LOISIRS, LOGEMENT).
  */
 data class Transaction(
-    val id: String,
+    val id: String = generateUUID(),
     val title: String,
     val amount: Double,
     val date: Long,

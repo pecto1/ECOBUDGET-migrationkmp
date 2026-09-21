@@ -1,20 +1,29 @@
+```gitignore
+# Android Studio / IntelliJ
+.idea/
 *.iml
-.gradle
-.kotlin
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.idea/compiler.xml
-.idea/vcs.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+
+# Gradle
+.gradle/
+**/build/
+
+# Kotlin
+.kotlin/
+
+# Local configuration
 local.properties
+
+# Environment
 .env
+
+# Android native build
+.cxx/
+.externalNativeBuild/
 debug.keystore
+
+# macOS
+.DS_Store
+
+# Android captures
+/captures
+```
