@@ -368,8 +368,12 @@ private fun EcoBudgetOverviewCard(
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 1.sp
                     ),
-                    color = Color(0xFFEDE9FE)
+                    color = Color(0xFFEDE9FE),
+                    maxLines = 1,
+                    modifier = Modifier.weight(1f)
                 )
+
+                Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
                     text = currentMonthLabel,
@@ -377,7 +381,9 @@ private fun EcoBudgetOverviewCard(
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Medium
                     ),
-                    color = Color(0xFFDDD6FE)
+                    color = Color(0xFFDDD6FE),
+                    maxLines = 1,
+                    softWrap = false
                 )
             }
 
@@ -440,8 +446,13 @@ private fun EcoBudgetOverviewCard(
                         fontWeight = FontWeight.Medium
                     ),
                     color = Color(0xFFEDE9FE),
-                    modifier = Modifier.testTag("total_spent_text")
+                    maxLines = 1,
+                    modifier = Modifier
+                        .weight(1f)
+                        .testTag("total_spent_text")
                 )
+
+                Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
                     text = stringResource(Res.string.budget_usage_percent_format, usagePercentage),
@@ -449,7 +460,9 @@ private fun EcoBudgetOverviewCard(
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold
                     ),
-                    color = Color.White
+                    color = Color.White,
+                    maxLines = 1,
+                    softWrap = false
                 )
             }
         }
